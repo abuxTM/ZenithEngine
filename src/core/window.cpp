@@ -1,9 +1,8 @@
-#include "core/window.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+#include "ZenithEngine/core/window.h"
+#include "ZenithEngine/libs/imgui/imgui.h"
+#include "ZenithEngine/libs/imgui/imgui_impl_glfw.h"
+#include "ZenithEngine/libs/imgui/imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
-#include <imgui.h>
 #include <iostream>
 #include <unordered_map>
 
@@ -24,7 +23,7 @@ Window::Window(const char* title, int width, int height, bool dynamic)
 
   // Add hints to the GLFW
   glfwWindowHint(GLFW_RESIZABLE, dynamic);
-  glfwWindowHint(GLFW_SAMPLES, 4);
+  glfwWindowHint(GLFW_SAMPLES, 16);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -54,7 +53,7 @@ Window::Window(const char* title, int width, int height, bool dynamic)
 
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
-  glCullFace(GL_FRONT); // Change this to GL_BACK if needed
+  glCullFace(GL_FRONT);
   glFrontFace(GL_CCW);
   glEnable(GL_BLEND);
   glEnable(GL_MULTISAMPLE); 
@@ -64,17 +63,18 @@ Window::Window(const char* title, int width, int height, bool dynamic)
   IMGUI_CHECKVERSION();
   ImGui::CreateContext();
   ImGuiIO& io = ImGui::GetIO(); (void)io;
+
   io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
   io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
   io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
   /*io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows*/
 
-    // Setup Platform/Renderer backends
-    ImGui_ImplGlfw_InitForOpenGL(window, true);
+  // Setup Platform/Renderer backends
+  ImGui_ImplGlfw_InitForOpenGL(window, true);
 #ifdef __EMSCRIPTEN__
-    ImGui_ImplGlfw_InstallEmscriptenCallbacks(window, "#canvas");
+  ImGui_ImplGlfw_InstallEmscriptenCallbacks(window, "#canvas");
 #endif
-    ImGui_ImplOpenGL3_Init("#version 330");
+  ImGui_ImplOpenGL3_Init("#version 330");
 }
 
 Window::~Window() {
@@ -134,6 +134,7 @@ void Window::onResized(GLFWwindow* glfwWindow, int32_t width, int32_t height) {
   if (window) {
     window->setHeight(height);
     window->setWidth(width);
+
     glViewport(0, 0, window->getWidth(), window->getHeight());
   }
 }

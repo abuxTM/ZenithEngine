@@ -1,0 +1,2 @@
+file(GLOB EXAMPLES_SOURCES "*.cpp")
+

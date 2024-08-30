@@ -1,4 +1,4 @@
-#include "core/shader.h"
+#include "ZenithEngine/core/shader.h"
 #include <fstream>
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
@@ -46,10 +46,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath) {
   glCompileShader(vertex);
   // print compile errors if any
   glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
-  if(!success)
-  {
-      glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-      std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+  if (!success) {
+    glGetShaderInfoLog(vertex, 512, NULL, infoLog);
+    std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
   };
   
   fragment = glCreateShader(GL_FRAGMENT_SHADER);
@@ -65,10 +64,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath) {
   glLinkProgram(ID);
   // print linking errors if any
   glGetProgramiv(ID, GL_LINK_STATUS, &success);
-  if(!success)
-  {
-      glGetProgramInfoLog(ID, 512, NULL, infoLog);
-      std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+  if (!success) {
+    glGetProgramInfoLog(ID, 512, NULL, infoLog);
+    std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
   }
     
   // delete the shaders as they're linked into our program now and no longer necessary
@@ -98,6 +96,18 @@ void Shader::setInt(const std::string& name, int value) const {
 
 void Shader::setFloat(const std::string& name, float value) const {
   glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+}
+
+float Shader::getFloat(const std::string& name) const {
+  GLint location = glGetUniformLocation(ID, name.c_str());
+
+  GLint value;
+  glGetUniformiv(ID, location, &value);
+  return static_cast<float>(value);
+}
+
+void Shader::setVec2(const std::string& name, glm::vec2 value) const {
+  glUniform2fv(glGetUniformLocation(ID, name.c_str()), 1, glm::value_ptr(value));
 }
 
 void Shader::setVec3(const std::string& name, glm::vec3 value) const {

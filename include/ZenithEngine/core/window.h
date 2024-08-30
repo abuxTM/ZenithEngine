@@ -1,7 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "glad/glad.h"
+#include <ZenithEngine/libs/glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <cstdint>
 #include <glm/fwd.hpp>
@@ -9,7 +9,7 @@
 
 class Window {
 public:
-  Window(const char* title="Maskot-Lite", int width=1280, int height=720, bool dynamic=false);
+  Window(const char* title="ZenithEngine", int width=1280, int height=720, bool dynamic=false);
   ~Window();
 
   void clear();
@@ -30,6 +30,8 @@ public:
   bool isKeyPressed(int key);
   void getCursorPos(double* x, double* y) { glfwGetCursorPos(window, x, y); }
   void setCursorVis(bool value=true) { glfwSetInputMode(window, GLFW_CURSOR, value ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL); }
+
+  bool camera = false;
 
   float deltaTime;
 

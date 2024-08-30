@@ -114,9 +114,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#include "imgui.h"
+#include "ZenithEngine/libs/imgui/imgui.h"
 #ifndef IMGUI_DISABLE
-#include "imgui_impl_opengl3.h"
+#include "ZenithEngine/libs/imgui/imgui_impl_opengl3.h"
 #include <stdio.h>
 #include <stdint.h>     // intptr_t
 #if defined(__APPLE__)
@@ -168,7 +168,7 @@
 // - You can temporarily use an unstripped version. See https://github.com/dearimgui/gl3w_stripped/releases
 // Changes to this backend using new APIs should be accompanied by a regenerated stripped loader version.
 #define IMGL3W_IMPL
-#include "imgui_impl_opengl3_loader.h"
+#include "ZenithEngine/libs/imgui/imgui_impl_opengl3_loader.h"
 #endif
 
 // Vertex arrays are not supported on ES2/WebGL1 unless Emscripten which uses an extension

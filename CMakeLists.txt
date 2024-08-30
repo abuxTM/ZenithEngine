@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Maskot)
+project(ZenithEngine)
 
 # Enable debug symbols
 set(CMAKE_C_FLAGS_DEBUG "-g")
@@ -22,7 +22,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Add common include directory
-include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/include/libs ${PROJECT_SOURCE_DIR}/include/libs/imgui)
+include_directories(${PROJECT_SOURCE_DIR}/include/ZenithEngine ${PROJECT_SOURCE_DIR}/include/ZenithEngine/libs ${PROJECT_SOURCE_DIR}/include/ZenithEngine/libs/imgui)
 
 # Collect all source files from subdirectories
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/src/*.cpp ${CMAKE_SOURCE_DIR}/src/libs/imgui/*.cpp ${CMAKE_SOURCE_DIR}/src/libs/glad/glad.c)
