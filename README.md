@@ -1,7 +1,5 @@
 ![example-0](https://github.com/user-attachments/assets/fa3432a0-6b13-43be-abb9-021fa231d90d)
-
-## Simple Game Engine
-This engine should be used as a template and it meant to provide simple features
+![image](https://github.com/user-attachments/assets/cb292cb4-b130-44ea-9446-00ece9f46654)
 
 ## Features
 Shaders<br>
