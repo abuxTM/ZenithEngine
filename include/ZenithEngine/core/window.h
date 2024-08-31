@@ -1,7 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <ZenithEngine/libs/glad/glad.h>
+#include <libs/glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <cstdint>
 #include <glm/fwd.hpp>
