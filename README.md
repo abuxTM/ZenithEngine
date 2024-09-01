@@ -19,11 +19,15 @@ sudo pacman -S glm
 ## Dependencies (MacOS)
 Install Homebrew and CMake
 ```
-brew install glfw GLEW assimp
+brew install glfw GLEW
 ```
 
 ## How to build
-simply create build folder and run<br>
+Simply create build folder and run<br>
 ```cmake ..```<br>
-```make run``` on Linux
-```./ZenithEngine``` from project directory on MacOS
+### Linux
+From the build directory:<br>
+```make run```
+### MacOS
+From the project directory:<br>
+```./ZenithEngine```
