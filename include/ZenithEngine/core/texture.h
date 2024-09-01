@@ -1,7 +1,13 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
+#ifndef __APPLE__
 #include <GL/gl.h>
+#endif
+#ifdef __APPLE__
+#include <glad/glad.h>
+#endif
+
 #include <string>
 
 class Texture {

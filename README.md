@@ -16,8 +16,18 @@ sudo pacman -S glfw
 sudo pacman -S glm
 ```
 
-## How to run it?
-simply create build folder and run<br>
+## Dependencies (MacOS)
+Install Homebrew and CMake
+```
+brew install glfw GLEW
+```
+
+## How to build
+Simply create build folder and run<br>
 ```cmake ..```<br>
-then you can run the app using<br>
-```make run```<br>
+### Linux
+From the build directory:<br>
+```make run```
+### MacOS
+From the project directory:<br>
+```./ZenithEngine```
